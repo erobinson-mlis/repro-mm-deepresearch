@@ -9,6 +9,8 @@
 
 MM-DeepResearch is a multimodal agentic search framework that combines hypergraph-based QA generation (Hyper-Search), decomposed tool-tree search trajectory synthesis (DR-TTS), and offline-corpus-based GRPO reinforcement learning. The paper claims 63.0% average accuracy across six benchmarks (17pp over Qwen3-VL-8B baseline). 
 
+**Links:** [📄 Paper (arXiv)](https://arxiv.org/abs/2603.01050) · [📂 Repo (original)](https://github.com/HJYao00/MM-DeepResearch) · [🔄 OpenReview](https://openreview.net/forum?id=XZAOCytvKQ) · [🤗 Model (8B)](https://huggingface.co/HuanjinYao/MM-DeepResearch-8B) · [🤗 Model (8B-SFT)](https://huggingface.co/HuanjinYao/MM-DeepResearch-8B-SFT) · [📊 Corpus](https://huggingface.co/datasets/HuanjinYao/MM-DeepResearch-corpus) · [🔧 Reproduction repo](https://github.com/erobinson-mlis/repro-mm-deepresearch)
+
 **Our verification covers:**
 - **Claim 1 (Hyper-Search):** Paper-section audit — the hypergraph construction and QA generation methodology is well-specified; the dataset (Hyper-Search-3K) is referenced but not separately published.
 - **Claim 2 (DR-TTS):** Codebase confirms 4 tool types (text_search, image_search_by_text_query, image_search_by_lens, model_search) matching paper specification; the decomposed expert training and tree-search recomposition pipeline for 10K trajectories is described in the paper but the code is not in this repo.
