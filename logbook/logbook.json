@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: MM-DeepResearch: A Simple and Effective Multimodal Agentic Search Baseline",
+  "emoji": "🎯",
+  "space_id": "erobinson/repro-mm-deepresearch-a-simple-and-effective-multimodal-agentic-search-baseline",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-XZAOCytvKQ"
+  ],
+  "updated_at": "2026-07-30T02:08:55+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: MM-DeepResearch: A Simple and Effective Multimodal Agentic Search Baseline",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-hyper-search-qa-generation-pipeline",
+        "title": "Claim 1: Hyper-Search QA generation pipeline",
+        "file": "pages/claim-1-hyper-search-qa-generation-pipeline/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-dr-tts-trajectory-synthesis",
+        "title": "Claim 2: DR-TTS trajectory synthesis",
+        "file": "pages/claim-2-dr-tts-trajectory-synthesis/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-training-pipeline-sft-grpo-rl",
+        "title": "Claim 3: Training pipeline (SFT + GRPO RL)",
+        "file": "pages/claim-3-training-pipeline-sft-grpo-rl/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-benchmark-results-63-0-avg-accuracy",
+        "title": "Claim 4: Benchmark results (63.0% avg accuracy)",
+        "file": "pages/claim-4-benchmark-results-63-0-avg-accuracy/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-ablation-results-search-depth-offline-vs-online",
+        "title": "Claim 5: Ablation results (search depth, offline vs online)",
+        "file": "pages/claim-5-ablation-results-search-depth-offline-vs-online/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [
+    {
+      "id": "session_trace",
+      "title": "Reproduction session",
+      "provider": "Agent",
+      "model": null,
+      "started_at": null,
+      "ended_at": null,
+      "duration_ms": null,
+      "event_count": 0,
+      "turn_count": 0,
+      "source_available": true,
+      "attached_at": "2026-07-30T01:55:03+00:00",
+      "index_file": "traces/session_trace/index.json"
+    }
+  ],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "erobinson/repro-mm-deepresearch-a-simple-and-effective-multimodal-agentic-search-baseline-artifacts"
+  },
+  "agent_view_tokens": 5760,
+  "trace_view_tokens": 26,
+  "workspace_view_tokens": 8,
+  "revision": "1bc1f46b6cf98eeac773"
+}

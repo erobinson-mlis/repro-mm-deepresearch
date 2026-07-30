@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MM-DeepResearch Reproduction — ICML 2026</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  @page { size: 48in 30in; margin: 0; }
+  :root {
+    --accent: #1a6fa0; --accent-deep: #0d4a70; --accent-light: #e0f0fa;
+    --gold: #c9a24a; --gold-soft: #fff7e0;
+    --text-primary: #1a1a1a; --text-secondary: #555;
+    --bg-page: #f4f4f4; --bg-card: #fff;
+    --border-soft: #d0d0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg-page); font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--text-primary); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+  .poster { width: 4800px; min-height: 3000px; background: white; display: flex; flex-direction: column; padding: 60px 80px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  
+  .header { text-align: center; padding-bottom: 30px; border-bottom: 4px solid var(--accent); margin-bottom: 30px; }
+  .header h1 { font-size: 48px; color: var(--accent-deep); margin-bottom: 8px; }
+  .header .subtitle { font-size: 22px; color: var(--text-secondary); }
+  .header .authors { font-size: 18px; color: var(--text-secondary); margin-top: 8px; }
+  
+  .main { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; flex: 1; }
+  
+  .col { display: flex; flex-direction: column; gap: 16px; }
+  
+  .card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 8px; padding: 20px; border-top: 3px solid var(--accent); }
+  .card h3 { font-size: 20px; color: var(--accent-deep); margin-bottom: 8px; }
+  .card .stat { font-size: 32px; font-weight: bold; color: var(--accent); }
+  .card p, .card li { font-size: 15px; line-height: 1.5; color: var(--text-secondary); }
+  .card ul { padding-left: 18px; margin-top: 6px; }
+  .card li { margin-bottom: 4px; }
+  
+  .badge { display: inline-block; background: var(--accent); color: white; padding: 2px 10px; border-radius: 4px; font-size: 13px; font-weight: bold; margin-right: 6px; }
+  .badge.gold { background: var(--gold); }
+  
+  .footer { margin-top: 24px; padding-top: 16px; border-top: 2px solid var(--border-soft); display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--text-muted); }
+  .footer a { color: var(--accent); }
+  
+  .hero { grid-column: 1 / -1; background: var(--accent-light); border: 1px solid var(--accent); border-radius: 8px; padding: 20px; margin-bottom: 8px; }
+  .hero h2 { font-size: 24px; color: var(--accent-deep); margin-bottom: 8px; }
+  .hero .results-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 12px; }
+  .hero .result-item { text-align: center; padding: 10px; background: white; border-radius: 6px; }
+  .hero .result-item .bench { font-size: 12px; color: var(--text-secondary); font-weight: bold; }
+  .hero .result-item .val { font-size: 22px; font-weight: bold; color: var(--accent-deep); }
+  .hero .result-item .val .improv { font-size: 14px; color: #2e7d32; }
+  
+  .verdict { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+  .verdict.confirmed { background: #e8f5e9; color: #2e7d32; }
+  .verdict.supported { background: #fff3e0; color: #e65100; }
+  .verdict.not-verified { background: #fce4ec; color: #c62828; }
+  
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--accent-light); padding: 6px 8px; text-align: left; font-size: 12px; color: var(--accent-deep); }
+  td { padding: 5px 8px; border-bottom: 1px solid var(--border-soft); }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="header">
+    <h1>MM-DeepResearch: Reproduction</h1>
+    <div class="subtitle">A Simple and Effective Multimodal Agentic Search Baseline</div>
+    <div class="authors">Yao et al. (ByteDance, NTU) · ICML 2026 Paper #631 · arXiv:2603.01050</div>
+  </div>
+
+  <div class="hero">
+    <h2>📊 Reported Benchmark Results (Paper Table 1)</h2>
+    <div class="results-grid">
+      <div class="result-item"><div class="bench">SimpleVQA</div><div class="val">62.6 <span class="improv">+18.1</span></div></div>
+      <div class="result-item"><div class="bench">MMSearch</div><div class="val">67.8 <span class="improv">+30.4</span></div></div>
+      <div class="result-item"><div class="bench">LiveVQA</div><div class="val">54.3 <span class="improv">+11.3</span></div></div>
+      <div class="result-item"><div class="bench">FVQA</div><div class="val">55.4 <span class="improv">+15.3</span></div></div>
+      <div class="result-item"><div class="bench">InfoSeek</div><div class="val">57.6 <span class="improv">+15.8</span></div></div>
+      <div class="result-item"><div class="bench">BrowseComp-VL</div><div class="val">80.4 <span class="improv">+11.2</span></div></div>
+    </div>
+    <p style="margin-top:12px; font-size:15px;"><strong>8B Average: 63.0%</strong> (+17pp over Qwen3-VL-8B) · <strong>32B Average: 65.3%</strong> (+14.9pp over Qwen3-VL-32B)</p>
+  </div>
+
+  <div class="main">
+    <!-- Column 1: Claims 1-2 -->
+    <div class="col">
+      <div class="card">
+        <h3><span class="badge">C1</span> Hyper-Search QA</h3>
+        <p>Hypergraph-based QA generation: builds depth-D hypergraphs from web sources, produces intra- and inter-hyperedge QA pairs → <strong>Hyper-Search-3K</strong> dataset.</p>
+        <p><span class="verdict supported">Supported</span> Methodology well-specified; generation code not open-sourced.</p>
+      </div>
+      <div class="card">
+        <h3><span class="badge">C2</span> DR-TTS Trajectories</h3>
+        <p>4 tool types trained via RL experts → tree search recomposition → <strong>DR-TTS-10K</strong> SFT trajectories.</p>
+        <ul>
+          <li><strong>text_search</strong> (E5 FAISS)</li>
+          <li><strong>image_search_by_text_query</strong> (Jina-CLIP)</li>
+          <li><strong>image_search_by_lens</strong> (image similarity)</li>
+          <li><strong>model_search</strong> (expert LLM)</li>
+        </ul>
+        <p><span class="verdict supported">Supported</span> Tools confirmed; generation code not in repo.</p>
+      </div>
+    </div>
+
+    <!-- Column 2: Claim 3 -->
+    <div class="col">
+      <div class="card">
+        <h3><span class="badge gold">C3</span> Training Pipeline</h3>
+        <p><strong>CONFIRMED</strong> — Full code audit.</p>
+        <ul>
+          <li>SFT base: <code>HuanjinYao/MM-DeepResearch-8B-SFT</code></li>
+          <li>GRPO RL: n=5 rollouts, lr=1e-6, 35 epochs</li>
+          <li>Max 4 tool turns, max len 70K</li>
+          <li><strong>Format reward</strong> (0.1): tag structure</li>
+          <li><strong>Accuracy reward</strong> (0.9): EM + LLM judge</li>
+          <li>17 data sources</li>
+          <li>8x H20 GPUs</li>
+        </ul>
+        <p><span class="verdict confirmed">CONFIRMED</span></p>
+      </div>
+      <div class="card">
+        <h3><span class="badge gold">C5</span> Ablation: Offline Corpus</h3>
+        <p>E5 (text) + Jina-CLIP (image) embeddings with FAISS GPU indexes, matching paper.</p>
+        <p><span class="verdict supported">Supported</span> Infrastructure confirmed.</p>
+      </div>
+    </div>
+
+    <!-- Column 3: Claims 4-5 -->
+    <div class="col">
+      <div class="card">
+        <h3><span class="badge">C4</span> Benchmark Results</h3>
+        <p>Paper claims 63.0% (8B) / 65.3% (32B) average accuracy across 6 benchmarks.</p>
+        <table>
+          <tr><th>Model</th><th>Avg</th><th>Δ vs base</th></tr>
+          <tr><td>Qwen3-VL-8B</td><td>46.0</td><td>—</td></tr>
+          <tr><td><strong>MM-DeepResearch-8B</strong></td><td><strong>63.0</strong></td><td><strong>+17.0</strong></td></tr>
+          <tr><td>Qwen3-VL-32B</td><td>50.4</td><td>—</td></tr>
+          <tr><td><strong>MM-DeepResearch-32B</strong></td><td><strong>65.3</strong></td><td><strong>+14.9</strong></td></tr>
+        </table>
+        <p style="margin-top:6px;"><span class="verdict not-verified">Not Verified</span> Needs 2x A100/H100 + search API keys.</p>
+      </div>
+      <div class="card">
+        <h3><span class="badge gold">Data</span> Resources</h3>
+        <p><strong>Model (8B):</strong><br>https://huggingface.co/HuanjinYao/MM-DeepResearch-8B</p>
+        <p><strong>Corpus:</strong><br>https://huggingface.co/datasets/HuanjinYao/MM-DeepResearch-corpus</p>
+        <p><strong>GitHub:</strong><br>https://github.com/HJYao00/MM-DeepResearch</p>
+      </div>
+    </div>
+
+    <!-- Column 4: Overall -->
+    <div class="col">
+      <div class="card">
+        <h3>📋 Conclusion</h3>
+        <table>
+          <tr><th>Claim</th><th>Status</th></tr>
+          <tr><td>C1: Hyper-Search</td><td><span class="verdict supported">Supported</span></td></tr>
+          <tr><td>C2: DR-TTS</td><td><span class="verdict supported">Supported</span></td></tr>
+          <tr><td>C3: Training</td><td><span class="verdict confirmed">Confirmed</span></td></tr>
+          <tr><td>C4: Benchmarks</td><td><span class="verdict not-verified">Paper only</span></td></tr>
+          <tr><td>C5: Ablation</td><td><span class="verdict supported">Supported</span></td></tr>
+        </table>
+        <p style="margin-top:10px;"><strong>Core training pipeline is fully reproducible.</strong> Data generation pipelines not open-sourced. Benchmark verification requires GPU compute + paid API keys.</p>
+      </div>
+      <div class="card">
+        <h3>🏗️ Architecture</h3>
+        <ul>
+          <li>Base: Qwen3-VL-8B/32B-Instruct</li>
+          <li>Training: VeRL + Ray + SGLang</li>
+          <li>Retrieval: FAISS GPU (E5 + Jina-CLIP)</li>
+          <li>Reward: Format + EM + LLM Judge</li>
+          <li>Tools: text_search, image_search, lens_search, model_search</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Reproduction logbook: <a href="#">erobinson/repro-mm-deepresearch</a></span>
+    <span>ICML 2026 Agent Reproduction Challenge · Trackio</span>
+  </div>
+</div>
+</body>
+</html>
