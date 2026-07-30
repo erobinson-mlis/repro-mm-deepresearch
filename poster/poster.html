@@ -12,7 +12,7 @@
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <style>
-  @page { size: 30in 36in; margin: 0; }
+  @page { size: 30in 9in; margin: 0; }
   :root {
     --accent: #1a6fa0; --accent-deep: #0d4a70; --accent-light: #e0f0fa;
     --gold: #c9a24a; --gold-soft: #fff7e0;
@@ -22,46 +22,46 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg-page); font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--text-primary); margin: 0; padding: 0; }
-  .poster { width: 2880px; min-height: 3456px; background: white; display: flex; flex-direction: column; padding: 32px 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-  
-  .header { text-align: center; padding-bottom: 14px; border-bottom: 4px solid var(--accent); margin-bottom: 14px; }
-  .header h1 { font-size: 48px; color: var(--accent-deep); margin-bottom: 6px; }
-  .header .subtitle { font-size: 22px; color: var(--text-secondary); }
-  .header .authors { font-size: 18px; color: var(--text-secondary); margin-top: 8px; }
-  
-  .main { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; }
-  
-  .col { display: flex; flex-direction: column; gap: 10px; }
-  
-  .card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 8px; padding: 20px; border-top: 3px solid var(--accent); }
-  .card h3 { font-size: 20px; color: var(--accent-deep); margin-bottom: 8px; }
-  .card .stat { font-size: 32px; font-weight: bold; color: var(--accent); }
-  .card p, .card li { font-size: 15px; line-height: 1.5; color: var(--text-secondary); }
-  .card ul { padding-left: 18px; margin-top: 6px; }
-  .card li { margin-bottom: 4px; }
-  
-  .badge { display: inline-block; background: var(--accent); color: white; padding: 2px 10px; border-radius: 4px; font-size: 13px; font-weight: bold; margin-right: 6px; }
+  .poster { width: 2880px; height: 864px; background: white; display: flex; flex-direction: column; padding: 12px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
+  .header { text-align: center; padding-bottom: 4px; border-bottom: 3px solid var(--accent); margin-bottom: 4px; }
+  .header h1 { font-size: 40px; color: var(--accent-deep); margin-bottom: 2px; }
+  .header .subtitle { font-size: 18px; color: var(--text-secondary); }
+  .header .authors { font-size: 15px; color: var(--text-secondary); margin-top: 2px; }
+
+  .main { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; flex: 1; }
+
+  .col { display: flex; flex-direction: column; gap: 4px; justify-content: space-between; }
+
+  .card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 5px; padding: 6px 8px; border-top: 3px solid var(--accent); }
+  .card h3 { font-size: 15px; color: var(--accent-deep); margin-bottom: 2px; }
+  .card .stat { font-size: 24px; font-weight: bold; color: var(--accent); }
+  .card p, .card li { font-size: 12px; line-height: 1.25; color: var(--text-secondary); }
+  .card ul { padding-left: 12px; margin-top: 1px; }
+  .card li { margin-bottom: 1px; }
+
+  .badge { display: inline-block; background: var(--accent); color: white; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: bold; margin-right: 3px; }
   .badge.gold { background: var(--gold); }
-  
-  .footer { margin-top: 10px; padding-top: 10px; border-top: 2px solid var(--border-soft); display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--text-muted); }
+
+  .footer { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); }
   .footer a { color: var(--accent); }
-  
-  .hero { grid-column: 1 / -1; background: var(--accent-light); border: 1px solid var(--accent); border-radius: 8px; padding: 14px; }
-  .hero h2 { font-size: 24px; color: var(--accent-deep); margin-bottom: 4px; }
-  .hero .results-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 6px; }
-  .hero .result-item { text-align: center; padding: 10px; background: white; border-radius: 6px; }
-  .hero .result-item .bench { font-size: 12px; color: var(--text-secondary); font-weight: bold; }
-  .hero .result-item .val { font-size: 22px; font-weight: bold; color: var(--accent-deep); }
-  .hero .result-item .val .improv { font-size: 14px; color: #2e7d32; }
-  
-  .verdict { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+
+  .hero { grid-column: 1 / -1; background: var(--accent-light); border: 1px solid var(--accent); border-radius: 4px; padding: 4px 6px; }
+  .hero h2 { font-size: 16px; color: var(--accent-deep); margin-bottom: 1px; }
+  .hero .results-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; margin-top: 2px; }
+  .hero .result-item { text-align: center; padding: 2px 3px; background: white; border-radius: 3px; }
+  .hero .result-item .bench { font-size: 9px; color: var(--text-secondary); font-weight: bold; }
+  .hero .result-item .val { font-size: 15px; font-weight: bold; color: var(--accent-deep); }
+  .hero .result-item .val .improv { font-size: 10px; color: #2e7d32; }
+
+  .verdict { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: bold; }
   .verdict.confirmed { background: #e8f5e9; color: #2e7d32; }
   .verdict.supported { background: #fff3e0; color: #e65100; }
   .verdict.not-verified { background: #fce4ec; color: #c62828; }
-  
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th { background: var(--accent-light); padding: 6px 8px; text-align: left; font-size: 12px; color: var(--accent-deep); }
-  td { padding: 5px 8px; border-bottom: 1px solid var(--border-soft); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  th { background: var(--accent-light); padding: 2px 4px; text-align: left; font-size: 10px; color: var(--accent-deep); }
+  td { padding: 2px 4px; border-bottom: 1px solid var(--border-soft); }
 </style>
 </head>
 <body>
@@ -70,7 +70,7 @@
     <h1>MM-DeepResearch: Reproduction</h1>
     <div class="subtitle">A Simple and Effective Multimodal Agentic Search Baseline</div>
     <div class="authors">Yao et al. (ByteDance, NTU) · ICML 2026 Paper #631 · arXiv:2603.01050</div>
-    <div class="subtitle" style="font-size:14px; margin-top:4px;">🔧 <a href="https://github.com/erobinson-mlis/repro-mm-deepresearch" style="color:#1a6fa0;">github.com/erobinson-mlis/repro-mm-deepresearch</a> · 🤗 <a href="https://huggingface.co/spaces/erobinson/repro-mm-deepresearch-a-simple-and-effective-multimodal-agentic-search-baseline" style="color:#1a6fa0;">Logbook</a></div>
+    <div style="font-size:11px; margin-top:1px;">🔧 <a href="https://github.com/erobinson-mlis/repro-mm-deepresearch" style="color:#1a6fa0;">github.com/erobinson-mlis/repro-mm-deepresearch</a> · 🤗 <a href="https://huggingface.co/spaces/erobinson/repro-mm-deepresearch-a-simple-and-effective-multimodal-agentic-search-baseline" style="color:#1a6fa0;">Logbook</a></div>
   </div>
 
   <div class="hero">
@@ -83,7 +83,7 @@
       <div class="result-item"><div class="bench">InfoSeek</div><div class="val">57.6 <span class="improv">+15.8</span></div></div>
       <div class="result-item"><div class="bench">BrowseComp-VL</div><div class="val">80.4 <span class="improv">+11.2</span></div></div>
     </div>
-    <p style="margin-top:12px; font-size:15px;"><strong>8B Average: 63.0%</strong> (+17pp over Qwen3-VL-8B) · <strong>32B Average: 65.3%</strong> (+14.9pp over Qwen3-VL-32B)</p>
+    <p style="margin-top:2px; font-size:11px;"><strong>8B Average: 63.0%</strong> (+17pp over Qwen3-VL-8B) · <strong>32B Average: 65.3%</strong> (+14.9pp over Qwen3-VL-32B)</p>
   </div>
 
   <div class="main">
